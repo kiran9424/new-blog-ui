@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider } from 'angular-6-social-login';
 
 export function provideConfig() {
-    const google_oauth_client_id: string = '52811530001-a46o36kfqfcdj876vsekv6jg3qe3uln3.apps.googleusercontent.com';
+    const google_oauth_client_id: string = '***************************';
     let config = new AuthServiceConfig([
         {
             id: GoogleLoginProvider.PROVIDER_ID,
