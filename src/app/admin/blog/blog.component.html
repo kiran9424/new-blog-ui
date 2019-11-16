@@ -1,0 +1,66 @@
+<div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 pt-5  pb-5">
+                <h2>Create New Blog</h2>
+            </div>
+            <div class="container-fluid">
+                    <form [formGroup]="editorForm">
+                <div class="row">
+                    
+                        <div class="col-md-8">
+
+
+                            <div class="form-group">
+                                <label for="title">Title</label>
+                                <input type="text" name="title" id="title" class="form-control"
+                                    (change)="blogTitle($event,'title')" formControlName="title">
+                            </div>
+
+                            <quill-editor (click)="blogContent()" formControlName='body' [(ngModel)]="someValue">
+                            </quill-editor>
+
+                            <button type="submit" class="btn btn-primary mt-2" (click)="publishBlog()">Publish</button>
+
+                        </div>
+                        <div class="col md-4">
+                            <div class="form-group pb-2">
+                                <h5>Featured Image</h5>
+                                <hr />
+                                <small class="text-muted">Max size: 1mb</small>
+                                <br>
+                                <label class="btn btn-outline-info">
+                                    Upload Featured Image
+                                    <input type="file" accept="image/*" hidden (change)="blogTitle($event,'photo')" />
+                                </label>
+                            </div>
+                            <h5>Categories</h5>
+                            <hr />
+                            <ul style="height:100px; overflow-y: scroll;">
+                                <li class="list-unstyled" *ngFor="let category  of categories let i=index">
+
+                                    <input type="checkbox" [checked] = "categoriesTagsChecked"class="mr-2" (change)="categoryHandled(category._id,i)"
+                                        >
+
+                                    <label class="form-check-lable">{{category.categoryName}}</label>
+
+                                </li>
+                            </ul>
+
+
+                            <h5>Tags</h5>
+                            <hr />
+                            <ul style="max-height:100px; overflow-y: scroll;">
+                                <li class="list-unstyled" *ngFor="let tag of tags">
+
+                                    <input type="checkbox"[checked] = "categoriesTagsChecked" class="mr-2" (change)="tagHandled(tag._id)">
+                                    <label class="form-check-lable">{{tag.tagName}}</label>
+
+                                </li>
+                            </ul>
+                        </div>
+                    
+                </div>
+            </form>
+            </div>
+        </div>

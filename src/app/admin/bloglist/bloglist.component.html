@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <header>
+        <div class="col-md-12 pt-3">
+            <h1 class="display-4 font-weight-bold text-center">Programing Blogs And Tutorials</h1>
+        </div>
+        <section *ngFor="let blog of blogList; let i =index">
+            <div class="pb-3">
+                <ng-container *ngFor="let category of blog.categories">
+                    <a class="btn btn-primary mr-1 ml-1 mt-3">{{category.categoryName  }}</a>
+                </ng-container>
+            </div>
+                <!-- <ng-container *ngFor="let tag of blog.tags">
+                    <a class="btn btn-primary mr-1 ml-1 mt-3">{{tag.tagName}}</a>
+                </ng-container> -->
+            
+        </section>
+
+    </header>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12 pt-3">
+            <article>
+                <div class="lead pb-4" *ngFor="let blog of blogList let i =index">
+                    <header>
+                        <a href="" class=" pt-3 pb-3 font-weight-bold">{{blog.title}}</a>
+                    </header>
+                    <section>
+                        <p class="mark ml-1 pt-2 pb-2">
+                            Written by {{blog.postedBy.name}} | Published {{moment(blog.updatedAt).fromNow()}}
+                        </p>
+                    </section>
+                    <section>
+                        <ng-container *ngFor="let category of blog.categories">
+                            <a class="btn btn-outline-primary m-2" onMouseOver="this.style.color='white'"
+                                onMouseOut="this.style.color='black'">
+                                {{category.categoryName}}
+                            </a>
+                        </ng-container>
+                        <ng-container *ngFor="let tag of blog.tags">
+                            <a class="btn btn-primary m-2" style="color: white;">
+                                {{tag.tagName}}
+                            </a>
+                        </ng-container>
+                        <br>
+                        <br>
+                    </section>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img [src]='' [alt]="blog.title" style="max-height: '150px'; width:'auto';">
+                        </div>
+                        <div class="col-md-8">
+                            <section>
+                                <div [innerHtml]="blog.excerpt"> </div>
+                                <a href="" class="btn btn-primary mt-2">Read More</a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </article>
+        </div>
+
+    </div>
+
+</div>
